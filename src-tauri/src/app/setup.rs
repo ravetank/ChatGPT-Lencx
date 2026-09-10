@@ -1,6 +1,6 @@
 use crate::{
   app,
-  conf::AppConf,
+  conf::{is_chatgpt_origin, AppConf},
   utils::{self, load_script},
 };
 use log::{error, info};
@@ -87,7 +87,7 @@ pub fn init(app: &mut App) -> Result<(), Box<dyn std::error::Error>> {
           .hidden_title(true);
       }
 
-      if url == "https://chat.openai.com" {
+      if is_chatgpt_origin(&url) {
         main_win = main_win
           .initialization_script(include_str!("../vendors/floating-ui-core.js"))
           .initialization_script(include_str!("../vendors/floating-ui-dom.js"))

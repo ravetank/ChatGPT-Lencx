@@ -1,5 +1,5 @@
 use crate::{
-  conf::AppConf,
+  conf::{is_chatgpt_origin, AppConf},
   utils::{self, load_script},
 };
 use log::info;
@@ -29,7 +29,7 @@ pub fn tray_window(handle: &tauri::AppHandle) {
       .initialization_script(&load_script("core.js"))
       .user_agent(&app_conf.ua_tray);
 
-    if app_conf.tray_origin == "https://chat.openai.com" && !app_conf.tray_dashboard {
+    if is_chatgpt_origin(&app_conf.tray_origin) && !app_conf.tray_dashboard {
       tray_win = tray_win
         .initialization_script(include_str!("../vendors/floating-ui-core.js"))
         .initialization_script(include_str!("../vendors/floating-ui-dom.js"))

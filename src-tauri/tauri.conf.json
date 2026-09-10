@@ -104,6 +104,15 @@
         {
           "windows": [
             "core",
+            "main",
+            "tray"
+          ],
+          "domain": "chatgpt.com",
+          "enableTauriAPI": true
+        },
+        {
+          "windows": [
+            "core",
             "main"
           ],
           "domain": "labs.openai.com",
