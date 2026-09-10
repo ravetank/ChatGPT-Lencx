@@ -1,8 +1,8 @@
 {
   "name": "ChatGPT Scripts",
-  "author": "lencx",
-  "description": "ChatGPT Desktop Application Core Extension Scripts.",
-  "url": "https://github.com/lencx/ChatGPT/tree/main/scripts",
+  "author": "lencx + ravetank",
+  "description": "MASAMUNE-maintained ChatGPT Desktop Application extension scripts.",
+  "url": "https://github.com/ravetank/ChatGPT-Lencx/tree/masamune/chatgpt-modern/scripts",
   "scripts": [
     {
       "name": "chat.js",
