@@ -164,6 +164,12 @@ pub fn init() -> Menu {
       .add_native_item(MenuItem::SelectAll),
   );
 
+  let export_menu = Submenu::new(
+    "Export",
+    Menu::new().add_item(
+      CustomMenuItem::new("export_markdown", "Markdown").accelerator("CmdOrCtrl+Shift+M"),
+    ),
+  );
   let view_menu = Submenu::new(
     "View",
     Menu::new()
@@ -210,6 +216,7 @@ pub fn init() -> Menu {
     .add_submenu(preferences_menu)
     .add_submenu(window_menu)
     .add_submenu(edit_menu)
+    .add_submenu(export_menu)
     .add_submenu(view_menu)
     .add_submenu(help_menu)
 }
@@ -363,6 +370,10 @@ pub fn menu_handler(event: WindowMenuEvent<tauri::Wry>) {
     }
     // Window
     "dalle2" => window::dalle2_window(&app, None, None, Some(false)),
+    // Export
+    "export_markdown" => win
+      .eval("window.__MASAMUNE_EXPORT__ && window.__MASAMUNE_EXPORT__.markdown()")
+      .unwrap(),
     // View
     "zoom_0" => win.eval("window.__zoom0 && window.__zoom0()").unwrap(),
     "zoom_out" => win.eval("window.__zoomOut && window.__zoomOut()").unwrap(),
